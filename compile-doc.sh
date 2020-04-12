@@ -3,7 +3,7 @@
 # sh compile.sh FILE_NUMBER
 
 BASEDIR=$(readlink -f "$(dirname "$(readlink -f "${0}")")")
-FILE="${BASEDIR}/report.md"
+FILE=($(ls hw*.md))
 
 if [[ "$(uname)" == "Linux" ]]
 then
@@ -14,5 +14,7 @@ else
   MONOFONT=Consolas
 fi
 
-pandoc ${FILE} -o "$(basename -- "${FILE%.*}").pdf" -M link-citations=true \
---bibliography=refer.bib --csl=ieee.csl --pdf-engine=xelatex -V CJKmainfont="${FONT}" -V monofont="${MONOFONT}"
+for f in "${FILE[@]}"
+do
+  pandoc ${f} -o $(basename -- "${f%.*}").pdf -N -M link-citations=true --bibliography=refer.bib --csl=ieee.csl --pdf-engine=xelatex -V CJKmainfont="${FONT}" -V monofont="${MONOFONT}"
+done
