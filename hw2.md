@@ -12,6 +12,18 @@ Link 2 and set the coefficient of fluctuation $k = 0.05$. Find the moment of ine
 analyze the change of the control input and reaction force on Link 2, and the changes of the shaking force
 and shaking moment.**
 
+Dynamic balance formula:
+
+$$
+\begin{aligned}
+\Sigma F &= \sum_{i=1}^4-m_i\vec{R_i}\omega_i^2 = 0
+\\
+\Sigma M &= \sum_{i=1}^4\vec{l_i}\times m_i\vec{R_i}\omega_i^2 = 0
+\end{aligned}
+$$
+
+
+
 ## Q2
 
 **Please use the linkage balance method from the textbook to adjust the parameters (but the length must
@@ -74,12 +86,20 @@ m_4|\vec{R_4}|e^{j\phi_4} &= -m_3|\vec{R_3}|\frac{\overline{CD}}{\overline{BC}}e
 \end{aligned}
 $$
 
-Bring the fixed paramters into the formula:
+Bring the fixed paramters into the formula: (in $\theta_2=\frac{\pi}{2}$)
+
+$$
+\begin{cases}
+|\vec{R_3}| &= 0.4242
+\\
+\phi_3 &= 2.351
+\end{cases}
+$$
 
 $$
 \begin{aligned}
-|\vec{R_2}|e^{j\phi_2} &= |\vec{R_3}|\frac{10}{9}e^{j\phi_3} - 0.2
+|\vec{R_2}|e^{j\phi_2} &= -0.5315 + 0.335j
 \\
-0.2|\vec{R_4}|e^{j\phi_4} &= -|\vec{R_3}|\frac{25}{9}e^{j\phi_3}
+0.2|\vec{R_4}|e^{j\phi_4} &= 0.8288 - 0.8375j
 \end{aligned}
 $$
