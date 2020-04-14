@@ -12,17 +12,43 @@ Link 2 and set the coefficient of fluctuation $k = 0.05$. Find the moment of ine
 analyze the change of the control input and reaction force on Link 2, and the changes of the shaking force
 and shaking moment.**
 
-Dynamic balance formula:
+Input torque without flywheel:
+
+![](img/input_t.png)
+
+Mean value of the torque: $T_{avg} = -5316.8$ Nm
+
+And the $\theta@\omega_{min} = 2.7417$ rad, $\theta@\omega_{max} = 3.6935$ rad.
+
+Let motor torque $T_M = T_{avg}$.
+
+$$
+\int_{\theta@\omega_{min}}^{\theta@\omega_{max}}T_L - T_{avg} d\theta = \frac{1}{2} I(\omega_{max}^2 - \omega_{min}^2)
+$$
+
+The coefficient of fluctuation:
 
 $$
 \begin{aligned}
-\Sigma F &= \sum_{i=1}^4-m_i\vec{R_i}\omega_i^2 = 0
+\omega_{min} &= 1.4623 \times 10^8
 \\
-\Sigma M &= \sum_{i=1}^4\vec{l_i}\times m_i\vec{R_i}\omega_i^2 = 0
+\omega_{max} &= -3.2124 \times 10^8
+\\
+k &= \frac{\omega_{max} - \omega_{min}}{\omega_{avg}} = 0.05
+\\
+\omega_{avg} &= -9.3495 \times 10^9
 \end{aligned}
 $$
 
+$$
+\Delta E = \frac{1}{2} I(2\omega_{avg})(\omega_{max} - \omega_{min}) = I\omega_{avg}(\omega_{max} - \omega_{min}) = -2.7063 \times 10^6
+$$
 
+Obtianed the inertia of the flywheel:
+
+$$
+I = \frac{\Delta E}{k\omega_{avg}^2} = -6.1919 \times 10^{-13}
+$$
 
 ## Q2
 
