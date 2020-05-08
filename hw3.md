@@ -31,7 +31,11 @@ $$
 **Consider the gas force only, determine the corresponding shaking force, the shaking moment based on the
 point $O$, and the output torque $T_2$.**
 
+
+
 ## Q3
 
 **Consider the inertial force only, determine the corresponding shaking force, the shaking moment based on
 the point $O$, and the output torque $T_2$.**
+
+
