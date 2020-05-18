@@ -65,6 +65,8 @@ $$
 T_{21} = F_g \frac{r}{l} \sin{\omega_2 t}(1 + \frac{r^2}{2l^2}\sin^2\omega_2 t) r\cos{\omega_2 t} + F_g r\sin{\omega_2 t}
 $$
 
+![](img/tg21.png)
+
 Shaking force $F_S$:
 
 $$
@@ -119,8 +121,12 @@ F_y &= -m_a(-r\omega_2^2\sin\omega_2 t)
 \end{cases}
 $$
 
+![](img/fi.png)
+
 Torque on pin 2:
 
 $$
 T_{21} = \frac{1}{2}m_b r^2\omega_2^2(\frac{r}{2l}\sin\omega_2 t - \sin 2\omega_2 t - \frac{3r}{2l}\sin 3\omega_2 t)
 $$
+
+![](img/ti21.png)
