@@ -12,13 +12,17 @@ $$
 \begin{cases}
 \theta_2 &= 0
 \\
-\omega &= 20.94 \text{rad}/\text{s}
+\omega &= \dot\theta_2 = 20.94 \text{rad}/\text{s}
 \\
 T_2 &= \omega^2 \times 10^{-4} = 0.0438 \text{N}\cdot\text{m}
 \\
-r &= 38\text{mm}
+R &= l_2 = 38\text{mm}
 \\
-l &= 133\text{mm}
+L &= l_3 = 133\text{mm}
+\\
+r_{G2} &= 0.3l_2 = 11.4\text{mm}
+\\
+r_{G3} &= 0.36l_3 = 47.88\text{mm}
 \\
 m_2 &= 5\text{kg}
 \\
@@ -42,7 +46,7 @@ Total kinetic and potential energy:
 
 $$
 \begin{cases}
-T &= \frac{1}{2}(I_{G2}\dot\theta_2^2 + I_{G3}\dot\theta_3^2 + m_4 v_{G4}^2)
+T &= \frac{1}{2}(I_{G2}\dot\theta_2^2 + I_{G3}\dot\theta_3^2 + m_4\dot x^2)
 \\
 V &= g\sin\theta_2[m_2 r_{G2} + m_3 (L + r_{G3})]
 \\
@@ -54,7 +58,7 @@ Applying $\frac{\partial}{\partial\dot\theta_2}$ to $L$:
 
 $$
 \begin{aligned}
-\frac{\partial L}{\partial\dot\theta_2} =& I_{G2} + I_{G3}\frac{\partial\theta_3^2}{\partial\theta_2} + m_4\frac{\partial v_{G4}^2}{\partial\dot\theta_2}
+\frac{\partial L}{\partial\dot\theta_2} =& I_{G2} + I_{G3}\frac{\partial\theta_3}{\partial\dot\theta_2} + m_4\frac{\partial\dot x}{\partial\dot\theta_2}
 \\
 &- g\dot\theta_2\cos\theta_2[m_2 r_{G2} + m_3 (L + r_{G3})]
 \end{aligned}
@@ -64,9 +68,9 @@ Applying $\frac{d}{dt}$ to $\frac{\partial L}{\partial\dot\theta_2}$:
 
 $$
 \begin{aligned}
-\frac{d}{dt}(\frac{\partial L}{\partial\dot\theta_2}) =& I_{G2} + 2I_{G3}\frac{\partial\dot\theta_3}{\partial\theta_2} + 2m_4\frac{\partial a_{G4}}{\partial\dot\theta_2}
+\frac{d}{dt}(\frac{\partial L}{\partial\dot\theta_2}) =& I_{G3}\frac{\partial\dot\theta_3}{\partial\dot\theta_2} + m_4\frac{\partial\ddot x}{\partial\dot\theta_2}
 \\
-&- g\ddot\theta_2\cos\dot\theta_2[m_2 r_{G2} + m_3 (L + r_{G3})]
+&- (g\ddot\theta_2\cos\theta_2 + g\dot\theta_2\sin\dot\theta_2)[m_2 r_{G2} + m_3 (L + r_{G3})]
 \end{aligned}
 $$
 
@@ -74,26 +78,29 @@ Applying $\frac{\partial}{\partial\theta_2}$ to $L$:
 
 $$
 \begin{aligned}
-\frac{\partial L}{\partial\theta_2} =& I_{G2}\frac{\dot\theta_2}{\partial\theta_2} + I_{G3} \frac{\dot\theta_2}{\partial\theta_2} + m_4\frac{\partial v}{\partial\theta_2}
-\\
-&- g\cos\theta_2[m_2 r_{G2} + m_3(L + r_{G_3})]
+\frac{\partial L}{\partial\theta_2} =& -g\cos\theta_2[m_2 r_{G2} + m_3(L + r_{G_3})]
 \end{aligned}
 $$
 
-The Lagrange equation of the gas force:
+The gas force:
 
 $$
-\begin{cases}
-\delta W_G &= F_G\delta r_G
+W_G = F\sin\theta_2(-R - \frac{\dot\theta_3}{\dot\theta_2})
+$$
+
+The result is:
+
+$$
+\begin{aligned}
+\frac{d}{dt}(\frac{\partial L}{\partial\dot\theta_2}) - \frac{\partial L}{\partial\theta_2} &=
+I_{G3}\frac{\partial\dot\theta_3}{\partial\dot\theta_2} + m_4\frac{\partial\ddot x}{\partial\dot\theta_2}
 \\
-\delta r_G &= \delta\theta_2 \cdot \sin\theta_2(-R - \frac{R^2\cos\theta_2}{L\sqrt{1 - (\frac{R}{L})^2\sin^2\theta_2}})
-\end{cases}
-$$
-
-It can be expressed as:
-
-$$
-W_G = F\sin\theta_2(-R - \frac{R^2\cos\theta_2}{L\sqrt{1 - (\frac{R}{L})^2\sin^2\theta_2}})
+&- (g\ddot\theta_2\cos\theta_2 + g\dot\theta_2\sin\dot\theta_2)[m_2 r_{G2} + m_3 (l_3 + r_{G3})]
+\\
+&+ g\cos\theta_2[m_2 r_{G2} + m_3(l_3 + r_{G_3})]
+\\
+&= T_2 + F\sin\theta_2(-l_2 - \frac{l_2^2\cos\theta_2}{l_3\sqrt{1 - (\frac{l_2}{l_3})^2\sin^2\theta_2}})
+\end{aligned}
 $$
 
 Vector loop:
@@ -109,33 +116,81 @@ $$
 Obtain $\theta_3$:
 
 $$
-\theta_3 = \sin^{-1}(\frac{R}{L}\sin\theta_2)
+\begin{cases}
+\theta_3 = \sin^{-1}(\frac{l_2}{l_3}\sin\theta_2)
+\\
+\dot\theta_3 = \frac{l_2^2\cos\theta_2}{l_3\sqrt{1 - (\frac{l_2}{l_3})^2\sin^2\theta_2}}\dot\theta_2
+\end{cases}
 $$
 
 Applying $\frac{d}{dt}$:
 
 $$
 \begin{cases}
-l_2\dot\theta_2\cos\theta_2 &= -l_3\dot\theta_3\cos\theta_3
+l_2\dot\theta_2\cos\theta_2 &= \dot x - l_3\dot\theta_3\cos\theta_3
 \\
 l_2\dot\theta_2\sin\theta_2 &= -l_3\dot\theta_3\sin\theta_3
 \end{cases}
 $$
 
-Applying $\frac{\partial}{\partial\dot\theta_2}$:
+Applying $\frac{\partial}{\partial\theta_2}$ to $\frac{d}{dt}$:
 
 $$
 \begin{cases}
-l_2\cos\theta_2 &= -l_3\frac{\partial\dot\theta_3}{\partial\dot\theta_2}\cos\theta_3
+l_2\frac{\partial\dot\theta_2}{\partial\theta_2}\sin\theta_2 &= \frac{\partial\dot x}{\partial\theta_2} - l_3\frac{\partial\dot\theta_3}{\partial\theta_2}\cos\theta_3
+\\
+l_2\frac{\partial\dot\theta_2}{\partial\theta_2}\cos\theta_2 &= -l_3\frac{\partial\dot\theta_3}{\partial\theta_2}\sin\theta_3
+\end{cases}
+$$
+
+Applying $\frac{\partial}{\partial\dot\theta_2}$ to $\frac{d}{dt}$:
+
+$$
+\begin{cases}
+l_2\cos\theta_2 &= \frac{\partial\dot x}{\partial\dot\theta_2} - l_3\frac{\partial\dot\theta_3}{\partial\dot\theta_2}\cos\theta_3
 \\
 l_2\sin\theta_2 &= -l_3\frac{\partial\dot\theta_3}{\partial\dot\theta_2}\sin\theta_3
 \end{cases}
 $$
 
-Obtain $\frac{\partial\dot\theta_3}{\partial\dot\theta_2}$:
+Obtain:
 
 $$
-\frac{\partial\dot\theta_3}{\partial\dot\theta_2} = -\frac{l_2\sin\theta_2}{l_3\cos\theta_3}
+\begin{cases}
+\frac{\partial\dot\theta_3}{\partial\dot\theta_2} &= \frac{\partial\theta_3}{\partial\theta_2} = -\frac{l_2\sin\theta_2}{l_3\sin\theta_3} = -1
+\\
+\frac{\partial\dot x}{\partial\dot\theta_2} &= l_2\cos\theta_2 - l_3\cos\theta_3
+\\
+\frac{\partial\ddot x}{\partial\dot\theta_2} &= l_2\dot\theta_2\sin\theta_2 - l_3\dot\theta_3\sin\theta_3 = l_2\sin\theta_2(\dot\theta_2 - \dot\theta_3)
+\end{cases}
+$$
+
+Substitute in to Lagrange equation:
+
+$$
+\begin{aligned}
+\frac{d}{dt}(\frac{\partial L}{\partial\dot\theta_2}) - \frac{\partial L}{\partial\theta_2} &=
+-I_{G3} + l_2 m_4\sin\theta_2(\dot\theta_2 - \frac{l_2^2\cos\theta_2}{l_3\sqrt{1 - (\frac{l_2}{l_3})^2\sin^2\theta_2}}\dot\theta_2)
+\\
+&- (g\ddot\theta_2\cos\theta_2 + g\dot\theta_2\sin\dot\theta_2)[m_2 r_{G2} + m_3 (l_3 + r_{G3})]
+\\
+&+ g\cos\theta_2[m_2 r_{G2} + m_3(l_3 + r_{G_3})]
+\\
+&= T_2 + F\sin\theta_2(-l_2 - \frac{l_2^2\cos\theta_2}{l_3\sqrt{1 - (\frac{l_2}{l_3})^2\sin^2\theta_2}})
+\end{aligned}
+$$
+
+Among them, the $\ddot\theta_2$ ($\alpha_2$) is unknown.
+Change the items and obtain:
+
+$$
+\begin{aligned}
+&\ddot\theta_2 =
+\\
+&\frac{-I_{G3} + \sin\theta_2[l_2 m_4(\dot\theta_2 - \dot\theta_3) - F(-l_2 - \frac{\dot\theta_3}{\dot\theta_2})] + g\cos\theta_2[m_2 r_{G2} + m_3(l_3 + r_{G_3})] - T_2}{g\cos\theta_2[m_2 r_{G2} + m_3 (l_3 + r_{G3})]}
+\\
+&- \frac{\sin\dot\theta_2}{\cos\theta_2}\dot\theta_2
+\end{aligned}
 $$
 
 ## Q2
